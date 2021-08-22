@@ -15,9 +15,7 @@ class PokeCard extends Component {
 
   async componetDidMount() {
     const resp = await axios.get(this.props.url)
-    .then(res=>{
-      console.log(res)
-    })
+    console.log(resp)
     
   }
   render() {
