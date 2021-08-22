@@ -5,12 +5,16 @@ import './list.css'
 class List extends Component
 {
   render(){
+    var card =[]
+    for(let  i = 0; i < 1000; i++){
+        card.push(<PokeCard/>)
+      }
   return(
+
+    
     <div className='list'>
-    <PokeCard/>
-    <PokeCard/>
-    <PokeCard/>
-    <PokeCard/>  
+    {      card   }
+        
  </div>
       )
   }
