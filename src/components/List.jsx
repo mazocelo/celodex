@@ -23,16 +23,23 @@ class List extends Component {
       })
       .then(res => {
         const pokes = res.data.results;
-        const listados = new Array(this.state.limit)
-        this.setState()
-        
-        
-        
-        this.setState({ pokemon: pokes });
+        const listados = new Array(this.state.limit);
+        this.setState();
 
+        this.setState({ pokemon: pokes });
+        console.log(pokes);
+        var novaLista = [];
+        const contagem = this.state.offset + this.state.limit;
+        for (let i = this.state.offset; i >= contagem; i++) {
+          novaLista.push(this.state.pokemon[i]);
+        }
+        console.log(novaLista);
+        this.setState({ lista: novaLista });
         //console.log(this.state.pokemon);
       });
   }
+
+  setLista() {}
   more21(e) {
     console.log(e);
     var atualizar = this.state.offset + this.state.limit;
@@ -43,7 +50,7 @@ class List extends Component {
   render() {
     return (
       <div className="list">
-        {this.state.pokemon.map((poke, i) => {
+        {this.state.lista.map((poke, i) => {
           console.log(poke);
           return <PokeCard key={i} url={poke.url} data={poke.name}></PokeCard>;
         })}
