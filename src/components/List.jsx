@@ -7,7 +7,10 @@ class List extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      url: "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=21", //https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20
+      
+      offset:0,
+      limit:21,
+      url: 'https://pokeapi.co/api/v2/pokemon/?offset=00&limit=1080',
       pokemon: []
     };
   }
@@ -18,7 +21,7 @@ class List extends Component {
           "Content-Type": "application/json"
         }
       })
-      .then(res => {
+     .then(res => {
         const pokes = res.data.results;
        
         this.setState({ pokemon: pokes });
