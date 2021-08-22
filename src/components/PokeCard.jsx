@@ -1,8 +1,12 @@
 import React from 'react'
-import P
+import './pokecard.css'
 function PokeCard(){
     return(
-    <div> oi</div>
+    <div>
+      <div> Vem pra cá deusa do Amor</div>
+    <br></br>
+     Caroline minha vida  
+      </div> 
     )
 
 }
