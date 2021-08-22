@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Router, Link } from "wouter";
+import React from 'react';
+//import React, { useState, useEffect } from "react";
+//import { Router, Link } from "wouter";
 
 /**
 * This code defines the react app
@@ -20,8 +21,17 @@ import "./styles/styles.css";
 // The component that adds our Meta tags to the page
 
 // Home function that is reflected across the site
+
+
+import List from './components/list.jsx'
+
+
+
+
+
+
 export default function Home() {
   return (
-    <div/>
+    <lis/>
   );
 }
