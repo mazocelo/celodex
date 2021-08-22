@@ -20,23 +20,14 @@ class List extends Component {
   }
 
   render() {
-    var lista;
-
-    if (this.state.pokemon) {
-      lista = this.state.pokemon.forEach((poke, i) => {
-        console.log(poke);
-        return <PokeCard data={poke.names} />;
-      });
-    } else {
-      lista = <PokeCard data={"oi"}></PokeCard>;
-    }
 
     return (
       <div className="list">
-        {this.state.pokemon.forEach((poke, i) => {
+        {this.state.pokemon.map((poke, i) => {
           console.log(poke.name);
-          return <PokeCard id={i} key={i} data={poke.name} />;
+          return <PokeCard  data={poke} ></PokeCard>
         })}
+        
       </div>
     );
   }
