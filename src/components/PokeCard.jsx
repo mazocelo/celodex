@@ -1,7 +1,9 @@
 import React from "react";
 import './pokecard.css'
 function PokeCard(props){
-    return(
+    
+  
+  return(
     <div className="pokecard">
      {props.data}
       </div> 

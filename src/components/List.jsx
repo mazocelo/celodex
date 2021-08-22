@@ -20,14 +20,12 @@ class List extends Component {
   }
 
   render() {
-
     return (
       <div className="list">
         {this.state.pokemon.map((poke, i) => {
-          console.log(poke.name);
-          return <PokeCard  data={poke} ></PokeCard>
+          console.log(poke);
+          return <PokeCard key={i} data={poke.name}></PokeCard>;
         })}
-        
       </div>
     );
   }
