@@ -20,13 +20,16 @@ class PokeCard extends Component {
         }
       })
       .then(res => {
-        console.log(res.data.sprites.front_default);
+        const img = res.data.sprites.front_default
+        //console.log(img);
+        this.setState({imageUrl:img})
+        console.log(this.state.imageUrl)
       });
   }
   render() {
     return (
       <div className="pokecard">
-        <img src={this.props.url} />
+        <img src={this.state.imageUrl} />
         <h1>{this.props.data}</h1>
       </div>
     );

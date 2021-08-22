@@ -4,3 +4,7 @@
   display:flex;
   flex-wrap: wrap;
 }
+.btnMore{
+  height:100px;
+  width:200px;
+}

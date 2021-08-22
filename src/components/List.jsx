@@ -7,7 +7,7 @@ class List extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      url: "https://pokeapi.co/api/v2/pokemon/", //https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20
+      url: "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=21", //https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20
       pokemon: []
     };
   }
@@ -27,6 +27,11 @@ class List extends Component {
       });
   }
 
+  more21(e){
+    console.log(e)
+  }
+  
+  
   render() {
     return (
       <div className="list">
@@ -34,6 +39,7 @@ class List extends Component {
           console.log(poke);
           return <PokeCard key={i} url={poke.url} data={poke.name}></PokeCard>;
         })}
+         <button className="btnMore" onClick = {(e)=>{this.emore21()}}> {'>>'}</button>
       </div>
     );
   }
