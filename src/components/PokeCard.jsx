@@ -16,14 +16,15 @@ class PokeCard extends Component {
   async componetDidMount() {
     const resp = await axios.get(this.props.url)
     .then(res=>{
-      console.log(res.data)
+      var resultado = res
+      console.log(res)
     })
     
   }
   render() {
     return (
       <div className="pokecard">
-        <img />
+        <img src = {this.props.url}/>
         <h1>{this.props.data}</h1>
       </div>
     );
