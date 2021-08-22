@@ -12,11 +12,19 @@ class List extends Component {
     };
   }
   async componentDidMount() {
-    const resp = await axios.get(this.state.url).then(res => {
-      const pokes = res.data.results;
-      this.setState({ pokemon: pokes });
-      console.log(this.state.pokemon);
-    });
+    const resp = await axios
+      .get(this.state.url, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => {
+        const pokes = res.data.results;
+       
+        this.setState({ pokemon: pokes });
+       
+        console.log(this.state.pokemon);
+      });
   }
 
   render() {
@@ -24,7 +32,7 @@ class List extends Component {
       <div className="list">
         {this.state.pokemon.map((poke, i) => {
           console.log(poke);
-          return <PokeCard key={i} url = {poke.url} data={poke.name}></PokeCard>;
+          return <PokeCard key={i} url={poke.url} data={poke.name}></PokeCard>;
         })}
       </div>
     );

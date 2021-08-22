@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./pokecard.css";
-
 import axios from "axios";
 
 class PokeCard extends Component {
@@ -13,7 +12,7 @@ class PokeCard extends Component {
     };
   }
 
-  async componetDidMount() {
+  async componentDidMount() {
     const resp = await axios
       .get(this.props.url, {
         headers: {
@@ -21,7 +20,7 @@ class PokeCard extends Component {
         }
       })
       .then(res => {
-        console.log(res);
+        console.log(res.data.sprites.front_default);
       });
   }
   render() {
