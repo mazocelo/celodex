@@ -13,7 +13,7 @@ import React from 'react';
 */
 
 // Import and apply CSS stylesheet
-import "./styles/styles.css";
+import "./styles/app.css";
 
 // Where all of our pages come from
 //import PageRouter from "./components/router.jsx";
@@ -32,6 +32,6 @@ import List from './components/list.jsx'
 
 export default function Home() {
   return (
-    <lis/>
+    <List/>
   );
 }
