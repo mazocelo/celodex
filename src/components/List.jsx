@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import PokeCard from "./PokeCard.jsx";
 import "./list.css";
+//import axios from 'axios'
 
 class List extends Component {
-  state = {
-    url: "https://pokeapi.co/api/v2/ability/",
-    pokemon: null
-  };
-  componentDidMount() {
-    
-    
+  constructor() {
+    this.state = {
+      url: "https://pokeapi.co/api/v2/pokemon/",
+      pokemon: null
+    };
   }
+
   render() {
-    return <div className="list">{card}</div>;
+    return <div className="list">{}</div>;
   }
 }
 
