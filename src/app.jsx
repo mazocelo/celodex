@@ -23,7 +23,7 @@ import "./styles/app.css";
 // Home function that is reflected across the site
 
 
-import List from './components/list.jsx'
+import List from './components/List.jsx'
 
 
 

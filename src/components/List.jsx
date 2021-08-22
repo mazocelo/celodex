@@ -6,7 +6,7 @@ class List extends Component
 {
   render(){
   return(
-    <div>
+    <div className='list'>
     <PokeCard/>
     <PokeCard/>
     <PokeCard/>
