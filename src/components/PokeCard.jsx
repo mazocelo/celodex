@@ -1,11 +1,9 @@
-import React from 'react'
+import React from "react";
 import './pokecard.css'
-function PokeCard(){
+function PokeCard(props){
     return(
     <div className="pokecard">
-      <div> Vem pra cá deusa do Amor</div>
-    <br></br>
-     Caroline minha vida  
+     {props.data}
       </div> 
     )
 
