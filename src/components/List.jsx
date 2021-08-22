@@ -24,7 +24,7 @@ class List extends Component {
       <div className="list">
         {this.state.pokemon.map((poke, i) => {
           console.log(poke);
-          return <PokeCard key={i} data={poke.name}></PokeCard>;
+          return <PokeCard key={i} url = {poke.url} data={poke.name}></PokeCard>;
         })}
       </div>
     );

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./pokecard.css";
-class PokeCard extends Component() {
+class PokeCard extends Component{
   constructor(props){
-  super()
+  super(props)
   this.state={
     name:'',
     imageUrl:'',
@@ -10,7 +10,11 @@ class PokeCard extends Component() {
   }
     }
   render() {
-    return <div className="pokecard"><h1>{this.props.data}</h1></div>;
+    return <div className="pokecard">
+      <img src= {this.props.url}/>        
+      <h1>{this.props.data}</h1>
+              
+    </div>;
   }
 }
 
