@@ -7,11 +7,11 @@ class List extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
-      offset:0,
-      limit:21,
-      url: 'https://pokeapi.co/api/v2/pokemon/?offset=00&limit=1080',
-      pokemon: []
+      offset: 0,
+      limit: 21,
+      url: "https://pokeapi.co/api/v2/pokemon/?offset=00&limit=1080",
+      pokemon: [],
+      lista: []
     };
   }
   async componentDidMount() {
@@ -21,20 +21,25 @@ class List extends Component {
           "Content-Type": "application/json"
         }
       })
-     .then(res => {
+      .then(res => {
         const pokes = res.data.results;
-       
+        const listados = new Array(this.state.limit)
+        this.setState()
+        
+        
+        
         this.setState({ pokemon: pokes });
-       
-        console.log(this.state.pokemon);
+
+        //console.log(this.state.pokemon);
       });
   }
-
-  more21(e){
-    console.log(e)
+  more21(e) {
+    console.log(e);
+    var atualizar = this.state.offset + this.state.limit;
+    this.setState({ offset: atualizar });
+    console.log(this.state.offset);
   }
-  
-  
+
   render() {
     return (
       <div className="list">
@@ -42,7 +47,14 @@ class List extends Component {
           console.log(poke);
           return <PokeCard key={i} url={poke.url} data={poke.name}></PokeCard>;
         })}
-         <button className="btnMore" onClick = {(e)=>{this.emore21()}}> {'>>'}</button>
+        <button
+          className="btnMore"
+          onClick={e => {
+            this.emore21(e);
+          }}
+        >
+          {">>"}
+        </button>
       </div>
     );
   }

@@ -23,7 +23,7 @@ class PokeCard extends Component {
         const img = res.data.sprites.front_default
         //console.log(img);
         this.setState({imageUrl:img})
-        console.log(this.state.imageUrl)
+        //console.log(this.state.imageUrl)
       });
   }
   render() {
