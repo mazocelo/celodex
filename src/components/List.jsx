@@ -31,20 +31,21 @@ class List extends Component {
       });
   }
   more21(e) {
-    //console.log(e);
+    if(this.state.offset >1080){
+      this.setState({})
+    }
     const atualizar = this.state.offset + this.state.limit;
     this.setState({ offset: atualizar });
     console.log(atualizar, this.state.offset);
-    //this.forceUpdate()
   }
 
   less21(e) {
-    if(this.state.offset < 0){
-      }
-    else{
-    const atualizar = this.state.offset - this.state.limit;  
-    this.setState({ offset: atualizar });
-    }//console.log(atualizar, this.state.offset);
+    if (this.state.offset <= 0) {
+      this.setState({ offset: 1080 });
+    } else {
+      const atualizar = this.state.offset - this.state.limit;
+      this.setState({ offset: atualizar });
+    } //console.log(atualizar, this.state.offset);
   }
   render() {
     return (
