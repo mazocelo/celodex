@@ -30,42 +30,37 @@ class List extends Component {
         this.setState({ pokemon: pokes });
       });
   }
-
   more21(e) {
     //console.log(e);
     const atualizar = this.state.offset + this.state.limit;
     this.setState({ offset: atualizar });
     console.log(atualizar, this.state.offset);
     //this.forceUpdate()
-    
   }
 
-  less21(e){
-      const atualizar = this.state.offset - this.state.limit;
+  less21(e) {
+    if(this.state.offset < 0){
+      }
+    else{
+    const atualizar = this.state.offset - this.state.limit;  
     this.setState({ offset: atualizar });
-    console.log(atualizar, this.state.offset);
-  
+    }//console.log(atualizar, this.state.offset);
   }
-  
-  
   render() {
     return (
       <div className="list">
         {this.state.pokemon.map((poke, i) => {
           //console.log(poke);
           var limiteFinal = this.state.limit + this.state.offset;
-          
-          
+
           if (i < limiteFinal && i >= this.state.offset) {
-            console.log(this.state.offset)
-                        return (
+            console.log(this.state.offset);
+            return (
               <PokeCard key={i} url={poke.url} data={poke.name}></PokeCard>
             );
-            
           } else {
           }
         })}
-        
         <button
           className="btnP"
           onClick={e => {
@@ -74,7 +69,6 @@ class List extends Component {
         >
           {"<<"}
         </button>
-        
         <button
           className="btnP"
           onClick={e => {
@@ -83,7 +77,6 @@ class List extends Component {
         >
           {">>"}
         </button>
-        
       </div>
     );
   }
