@@ -32,10 +32,12 @@ class List extends Component {
   }
 
   more21(e) {
-    console.log(e);
-    var atualizar = this.state.offset + this.state.limit;
+    //console.log(e);
+    const atualizar = this.state.offset + this.state.limit;
     this.setState({ offset: atualizar });
-    console.log(this.state.offset);
+    console.log(atualizar, this.state.offset);
+    //this.forceUpdate()
+    
   }
 
   render() {
@@ -44,12 +46,13 @@ class List extends Component {
         {this.state.pokemon.map((poke, i) => {
           //console.log(poke);
           
-          if (i < this.state.limit && i >this.state) {
-            
-          } else {
-            return (
+          if (i < this.state.limit && i >= this.state.offset) {
+            console.log(this.state.offset)
+                        return (
               <PokeCard key={i} url={poke.url} data={poke.name}></PokeCard>
             );
+            
+          } else {
           }
         })}
         <button
