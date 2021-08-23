@@ -8,7 +8,7 @@ class List extends Component {
     super(props);
     this.state = {
       offset: 0,
-      limit: 10,
+      limit: 21,
       url: "https://pokeapi.co/api/v2/pokemon/?offset=00&limit=1080",
       pokemon: [],
       lista: []
@@ -31,17 +31,17 @@ class List extends Component {
       });
   }
   more21(e) {
-    if(this.state.offset >1080){
-      this.setState({})
-    }
+    if(this.state.offset >1079){
+      this.setState({offset: 0})
+    }else{
     const atualizar = this.state.offset + this.state.limit;
     this.setState({ offset: atualizar });
     console.log(atualizar, this.state.offset);
-  }
+  }}
 
   less21(e) {
     if (this.state.offset <= 0) {
-      this.setState({ offset: 1080 });
+      this.setState({ offset: 1079 });
     } else {
       const atualizar = this.state.offset - this.state.limit;
       this.setState({ offset: atualizar });
