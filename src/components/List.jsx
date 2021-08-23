@@ -8,7 +8,7 @@ class List extends Component {
     super(props);
     this.state = {
       offset: 0,
-      limit: 20,
+      limit: 10,
       url: "https://pokeapi.co/api/v2/pokemon/?offset=00&limit=1080",
       pokemon: [],
       lista: []
@@ -40,13 +40,23 @@ class List extends Component {
     
   }
 
+  less21(e){
+      const atualizar = this.state.offset - this.state.limit;
+    this.setState({ offset: atualizar });
+    console.log(atualizar, this.state.offset);
+  
+  }
+  
+  
   render() {
     return (
       <div className="list">
         {this.state.pokemon.map((poke, i) => {
           //console.log(poke);
+          var limiteFinal = this.state.limit + this.state.offset;
           
-          if (i < this.state.limit && i >= this.state.offset) {
+          
+          if (i < limiteFinal && i >= this.state.offset) {
             console.log(this.state.offset)
                         return (
               <PokeCard key={i} url={poke.url} data={poke.name}></PokeCard>
@@ -55,14 +65,25 @@ class List extends Component {
           } else {
           }
         })}
+        
         <button
-          className="btnMore"
+          className="btnP"
+          onClick={e => {
+            this.less21(e);
+          }}
+        >
+          {"<<"}
+        </button>
+        
+        <button
+          className="btnP"
           onClick={e => {
             this.more21(e);
           }}
         >
           {">>"}
         </button>
+        
       </div>
     );
   }
