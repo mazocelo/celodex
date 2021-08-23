@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PokeCard from "./PokeCard.jsx";
 import "./list.css";
 import axios from "axios";
+import Searchbar from './Searchbar.jsx'
 
 class List extends Component {
   constructor(props) {
@@ -47,9 +48,18 @@ class List extends Component {
       this.setState({ offset: atualizar });
     } //console.log(atualizar, this.state.offset);
   }
+  
+  
+  search(e){
+      console.log(e.target)
+  }
+  
   render() {
     return (
       <div className="list">
+        <Searchbar onSubmit={(e)=>{this.search(e)}}>
+        </Searchbar>
+                
         {this.state.pokemon.map((poke, i) => {
           //console.log(poke);
           var limiteFinal = this.state.limit + this.state.offset;
