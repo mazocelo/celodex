@@ -51,13 +51,14 @@ class List extends Component {
   
   
   search(e){
-      console.log(e.target)
+      console.log(e)
   }
   
   render() {
     return (
       <div className="list">
-        <Searchbar onSubmit={(e)=>{this.search(e)}}>
+        <Searchbar>
+          <input
         </Searchbar>
                 
         {this.state.pokemon.map((poke, i) => {
