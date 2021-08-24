@@ -52,8 +52,7 @@ class List extends Component {
 
   search(e) {
     const procurado = e.target.value;
-    this.setState({ find: procurado });
-   
+    this.setState({ find: procurado });   
     /*this.state.pokemon.forEach((listado,i)=>{
         if(listado.name == this.state.find){
           const novoArray = [listado]
