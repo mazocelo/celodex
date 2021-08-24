@@ -7,6 +7,7 @@ class List extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      find: "",
       offset: 0,
       limit: 21,
       url: "https://pokeapi.co/api/v2/pokemon/?offset=00&limit=1080",
@@ -31,13 +32,14 @@ class List extends Component {
       });
   }
   more21(e) {
-    if(this.state.offset >1079){
-      this.setState({offset: 0})
-    }else{
-    const atualizar = this.state.offset + this.state.limit;
-    this.setState({ offset: atualizar });
-    console.log(atualizar, this.state.offset);
-  }}
+    if (this.state.offset > 1079) {
+      this.setState({ offset: 0 });
+    } else {
+      const atualizar = this.state.offset + this.state.limit;
+      this.setState({ offset: atualizar });
+      console.log(atualizar, this.state.offset);
+    }
+  }
 
   less21(e) {
     if (this.state.offset <= 0) {
@@ -47,20 +49,24 @@ class List extends Component {
       this.setState({ offset: atualizar });
     } //console.log(atualizar, this.state.offset);
   }
-  
-  
-  search(e){
-      console.log(e.target)
+
+  search(e) {
+    const procurado = e.target.value;
+    this.setState({ find: procurado });
   }
-  
+
   render() {
     return (
       <div className="list">
         <div>
-          <input onChange={(e)=>{this.search(e)}}></input>
-          <button> Procurar</button>
+          <input
+            onChange={e => {
+              this.search(e);
+            }}
+          ></input>
+          <button onClick={e => {}}> Procurar</button>
         </div>
-                
+
         {this.state.pokemon.map((poke, i) => {
           //console.log(poke);
           var limiteFinal = this.state.limit + this.state.offset;
