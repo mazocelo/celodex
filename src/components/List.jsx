@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PokeCard from "./PokeCard.jsx";
 import "./list.css";
 import axios from "axios";
-import Searchbar from './Searchbar.jsx'
 
 class List extends Component {
   constructor(props) {
@@ -51,15 +50,16 @@ class List extends Component {
   
   
   search(e){
-      console.log(e)
+      console.log(e.target)
   }
   
   render() {
     return (
       <div className="list">
-        <Searchbar>
-          <input
-        </Searchbar>
+        <div>
+          <input onChange={(e)=>{this.search(e)}}></input>
+          <button> Procurar</button>
+        </div>
                 
         {this.state.pokemon.map((poke, i) => {
           //console.log(poke);
