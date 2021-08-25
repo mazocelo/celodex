@@ -28,13 +28,7 @@ class List extends Component {
         const listados = new Array(this.state.limit);
 
         const contagem = this.state.offset + this.state.limit;
-        this.setState({ pokemon: pokes });
-        pokes.forEach((poke,i)=>{
-          if(listados.length <= i ){
-            
-          }
-        })
-        
+        this.setState({ pokemon: pokes, lista: pokes });
       });
   }
   more21(e) {
@@ -58,18 +52,24 @@ class List extends Component {
 
   search(e) {
     const procurado = e.target.value;
-    this.setState({ find: procurado });
+    if(procurado.length > 0){
+      console.log(procurado)
+    this.setState({ find: procurado, searching:true });
     this.state.pokemon.forEach((listado, i) => {
       if (listado.name == this.state.find) {
         console.log(listado);
 
         const novoArray = [listado];
         console.log(procurado);
-        this.setState({ lista: novoArray, searching: true });
+        this.setState({ lista: novoArray });
       }
-    });
+    });}
+    else{
+      this.setState({searching:false})
   }
- 
+  }
+  //  <button onClick={e => {}}> Procurar</button>
+
   render() {
     return (
       <div className="list">
@@ -79,25 +79,27 @@ class List extends Component {
               this.search(e);
             }}
           ></input>
-          <button onClick={e => {}}> Procurar</button>
         </div>
 
-        {
-        
-        this.state.pokemon.map((poke, i) => {
+        {this.state.lista.map((poke, i) => {
           //console.log(poke);
           var limiteFinal = this.state.limit + this.state.offset;
-
-          if (i < limiteFinal && i >= this.state.offset) {
-            // console.log(this.state.offset);
-            return (
-              <PokeCard key={i} url={poke.url} pokename={poke.name}></PokeCard>
-            );
+          if (!this.state.searching) {
+            if (i < limiteFinal && i >= this.state.offset) {
+              // console.log(this.state.offset);
+              return (
+                <PokeCard
+                  key={i}
+                  url={poke.url}
+                  pokename={poke.name}
+                ></PokeCard>
+              );
+            } else {
+            }
           } else {
+            return( <Pokecard key={this.state.find}></Pokecard>)
           }
-        })
-      
-        }
+        })}
         <button
           className="btnP"
           onClick={e => {
@@ -110,7 +112,7 @@ class List extends Component {
           className="btnP"
           onClick={e => {
             this.more21(e);
-           }}
+          }}
         >
           {">>"}
         </button>
