@@ -8,7 +8,7 @@ class List extends Component {
     super(props);
     this.state = {
       find: "",
-      searching:false,
+      searching: false,
       offset: 0,
       limit: 21,
       url: "https://pokeapi.co/api/v2/pokemon/?offset=00&limit=1080",
@@ -53,20 +53,21 @@ class List extends Component {
 
   search(e) {
     const procurado = e.target.value;
-    this.setState({ find: procurado });   
-    this.state.pokemon.forEach((listado,i)=>{
-      if(listado.name == this.state.find){
-        console.log(listado)
-    
-        const novoArray = [listado]
-          console.log(procurado)
-          this.setState({lista: novoArray,searching:true})
-          
-      }
-    })
-    
-  }
+    this.setState({ find: procurado });
+    this.state.pokemon.forEach((listado, i) => {
+      if (listado.name == this.state.find) {
+        console.log(listado);
 
+        const novoArray = [listado];
+        console.log(procurado);
+        this.setState({ lista: novoArray, searching: true });
+      }
+    });
+  }
+   tela  ()  {
+      
+    };
+ 
   render() {
     return (
       <div className="list">
@@ -79,23 +80,7 @@ class List extends Component {
           <button onClick={e => {}}> Procurar</button>
         </div>
 
-        {
-          
-          if(this.state.searching){
-          
-          }
-          this.state.pokemon.map((poke, i) => {
-          //console.log(poke);
-          var limiteFinal = this.state.limit + this.state.offset;
-
-          if (i < limiteFinal && i >= this.state.offset) {
-         // console.log(this.state.offset);
-            return (
-              <PokeCard key={i} url={poke.url} data={poke.name}></PokeCard>
-            );
-          } else {
-          }
-        })}
+        {}
         <button
           className="btnP"
           onClick={e => {
