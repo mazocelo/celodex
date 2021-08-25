@@ -28,8 +28,13 @@ class List extends Component {
         const listados = new Array(this.state.limit);
 
         const contagem = this.state.offset + this.state.limit;
-
         this.setState({ pokemon: pokes });
+        pokes.forEach((poke,i)=>{
+          if(listados.length <= i ){
+            
+          }
+        })
+        
       });
   }
   more21(e) {
