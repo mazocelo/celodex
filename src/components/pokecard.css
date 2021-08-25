@@ -1,5 +1,5 @@
 .pokecard {
-  margin:20px;
+  margin: 20px;
   height: 320px;
   width: 320px;
   background-color: red;
@@ -7,6 +7,26 @@
   border: 3px black solid;
   border-radius: 50%;
 }
-.pokename{
-  padding-left: 10px;  
+.pokename {
+  padding-left: 10px;
+}
+.bolinha-preta {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: black;
+  border: 3px black solid;
+  border-radius: 50%;
+}
+.listra {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 10px;
+  width: 320px;
+  background-color: white;
 }

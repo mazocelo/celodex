@@ -30,6 +30,9 @@ class PokeCard extends Component {
     return (
       <div className="pokecard">
         <img src={this.state.imageUrl} />
+        <div className='listra'>
+          <div className=' bolinha-preta'></div>
+        </div>
         <h1 className="pokename">{this.props.pokename}</h1>
       </div>
     );
