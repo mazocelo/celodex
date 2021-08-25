@@ -81,8 +81,7 @@ class List extends Component {
         </div>
 
         {
-          if (this.state.searching) {
-      } else {
+        
         this.state.pokemon.map((poke, i) => {
           //console.log(poke);
           var limiteFinal = this.state.limit + this.state.offset;
@@ -94,8 +93,8 @@ class List extends Component {
             );
           } else {
           }
-        });
-      }
+        })
+      
         }
         <button
           className="btnP"
