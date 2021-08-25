@@ -53,24 +53,21 @@ class List extends Component {
   search(e) {
     const procurado = e.target.value;
     if (procurado.length > 0) {
-      this.setState({ find: procurado }); //searching:true
-
-      this.state.pokemon.forEach((listado, i) => {
-        if (listado.name == this.state.find) {
-          console.log(listado);
-
-          const novoArray = [listado];
-          console.log(procurado);
-          this.setState({ lista: novoArray });
-        }
-      });
+      this.setState({ find: procurado }); //
+      console.log(this.state.find);
     } else {
-      //this.setState({ searching: false });
+      this.setState({ searching: false });
     }
   }
   //
   findNow() {
-    this.setState({ searching: false });
+    this.state.pokemon.forEach((listado, i) => {
+      if (listado.name == this.state.find) {
+        const novoArray = [listado];
+        console.log(novoArray);
+        this.setState({ lista: novoArray, searching: false });
+      }
+    });
   }
   render() {
     return (
@@ -91,27 +88,15 @@ class List extends Component {
           </button>
         </div>
 
-        {this.state.lista.map((poke, i) => {
+        {
+          this.state.lista.map((poke, i) => {
           //console.log(poke);
           var limiteFinal = this.state.limit + this.state.offset;
-          if (!this.state.searching) {
-            if (i < limiteFinal && i >= this.state.offset) {
-              // console.log(this.state.offset);
-              return (
-                <PokeCard
-                  key={i}
-                  url={poke.url}
-                  pokename={poke.name}
-                ></PokeCard>
-              );
-            } else {
-            }
+          if (i < limiteFinal && i >= this.state.offset) {
+            return (
+              <PokeCard key={i} url={poke.url} pokename={poke.name}></PokeCard>
+            );
           } else {
-             <PokeCard
-                  key={i}
-                  url={poke.url}
-                  pokename={poke.name}
-               
           }
         })}
         <button
