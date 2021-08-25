@@ -52,24 +52,26 @@ class List extends Component {
 
   search(e) {
     const procurado = e.target.value;
-    if(procurado.length > 0){
-      console.log(procurado)
-    this.setState({ find: procurado, searching:true });
-    this.state.pokemon.forEach((listado, i) => {
-      if (listado.name == this.state.find) {
-        console.log(listado);
+    if (procurado.length > 0) {
+      this.setState({ find: procurado }); //searching:true
 
-        const novoArray = [listado];
-        console.log(procurado);
-        this.setState({ lista: novoArray });
-      }
-    });}
-    else{
-      this.setState({searching:false})
-  }
-  }
-  //  <button onClick={e => {}}> Procurar</button>
+      this.state.pokemon.forEach((listado, i) => {
+        if (listado.name == this.state.find) {
+          console.log(listado);
 
+          const novoArray = [listado];
+          console.log(procurado);
+          this.setState({ lista: novoArray });
+        }
+      });
+    } else {
+      //this.setState({ searching: false });
+    }
+  }
+  //
+  findNow() {
+    this.setState({ searching: false });
+  }
   render() {
     return (
       <div className="list">
@@ -79,6 +81,14 @@ class List extends Component {
               this.search(e);
             }}
           ></input>
+          <button
+            onClick={e => {
+              this.findNow(e);
+            }}
+          >
+            {" "}
+            Procurar
+          </button>
         </div>
 
         {this.state.lista.map((poke, i) => {
@@ -97,7 +107,11 @@ class List extends Component {
             } else {
             }
           } else {
-            return( <Pokecard key={this.state.find}></Pokecard>)
+             <PokeCard
+                  key={i}
+                  url={poke.url}
+                  pokename={poke.name}
+               
           }
         })}
         <button
