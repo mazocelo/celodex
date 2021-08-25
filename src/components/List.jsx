@@ -80,7 +80,23 @@ class List extends Component {
           <button onClick={e => {}}> Procurar</button>
         </div>
 
-        {}
+        {
+          if (this.state.searching) {
+      } else {
+        this.state.pokemon.map((poke, i) => {
+          //console.log(poke);
+          var limiteFinal = this.state.limit + this.state.offset;
+
+          if (i < limiteFinal && i >= this.state.offset) {
+            // console.log(this.state.offset);
+            return (
+              <PokeCard key={i} url={poke.url} data={poke.name}></PokeCard>
+            );
+          } else {
+          }
+        });
+      }
+        }
         <button
           className="btnP"
           onClick={e => {
@@ -93,7 +109,7 @@ class List extends Component {
           className="btnP"
           onClick={e => {
             this.more21(e);
-          }}
+           }}
         >
           {">>"}
         </button>
