@@ -5,4 +5,8 @@
   background-color: red;
   color: black;
   border: 3px black solid;
+  border-radius: 50%;
+}
+.pokename{
+  padding-left: 10px;  
 }

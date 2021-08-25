@@ -64,9 +64,6 @@ class List extends Component {
       }
     });
   }
-   tela  ()  {
-      
-    };
  
   render() {
     return (
@@ -89,7 +86,7 @@ class List extends Component {
           if (i < limiteFinal && i >= this.state.offset) {
             // console.log(this.state.offset);
             return (
-              <PokeCard key={i} url={poke.url} data={poke.name}></PokeCard>
+              <PokeCard key={i} url={poke.url} pokename={poke.name}></PokeCard>
             );
           } else {
           }
