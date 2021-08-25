@@ -88,8 +88,7 @@ class List extends Component {
           </button>
         </div>
 
-        {
-          this.state.lista.map((poke, i) => {
+        {this.state.lista.map((poke, i) => {
           //console.log(poke);
           var limiteFinal = this.state.limit + this.state.offset;
           if (i < limiteFinal && i >= this.state.offset) {
