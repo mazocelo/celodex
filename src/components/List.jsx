@@ -63,9 +63,10 @@ class List extends Component {
   findNow() {
     this.state.pokemon.forEach((listado, i) => {
       if (listado.name == this.state.find) {
-        const novoArray = [listado];
-        console.log(novoArray);
-        this.setState({ lista: novoArray, searching: false });
+        //const novoArray = [listado];
+        //console.log(listado);
+       this.setState({ lista: [listado], searching: false });
+        
       }
     });
   }
@@ -91,11 +92,15 @@ class List extends Component {
         {this.state.lista.map((poke, i) => {
           //console.log(poke);
           var limiteFinal = this.state.limit + this.state.offset;
+          
+          if(searching){
+            return()
+          }
+          
           if (i < limiteFinal && i >= this.state.offset) {
             return (
               <PokeCard key={i} url={poke.url} pokename={poke.name}></PokeCard>
             );
-          } else {
           }
         })}
         <button
@@ -107,8 +112,9 @@ class List extends Component {
           {"<<"}
         </button>
         <button
+          
           className="btnP"
-          onClick={e => {
+          onClick={e => {  
             this.more21(e);
           }}
         >
