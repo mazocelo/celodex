@@ -59,11 +59,11 @@ class List extends Component {
   }
   //
   findNow() {
-    this.state.pokemon.forEach((listado, i) => {
+    return this.state.pokemon.forEach((listado, i) => {
       if (listado.name == this.state.find) {
         //const novoArray = [listado];
         //console.log(listado);
-       this.setState({ lista: [listado], searching: true });
+       return this.setState({ lista: [listado], searching: true });
         
       }
     });
