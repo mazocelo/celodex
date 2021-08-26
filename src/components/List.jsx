@@ -55,9 +55,7 @@ class List extends Component {
     if (procurado.length > 0) {
       this.setState({ find: procurado }); //
       console.log(this.state.find);
-    } else {
-      this.setState({ searching: false });
-    }
+    } 
   }
   //
   findNow() {
@@ -65,7 +63,7 @@ class List extends Component {
       if (listado.name == this.state.find) {
         //const novoArray = [listado];
         //console.log(listado);
-       this.setState({ lista: [listado], searching: false });
+       this.setState({ lista: [listado], searching: true });
         
       }
     });
@@ -90,14 +88,16 @@ class List extends Component {
         </div>
 
         {this.state.lista.map((poke, i) => {
-          //console.log(poke);
           var limiteFinal = this.state.limit + this.state.offset;
+            
+          if(this.state.  searching){
+          console.log(poke);
           
-          if(searching){
-            return()
+            return(<PokeCard key={i} url={poke.url} pokename={poke.name}></PokeCard>
+            )
           }
           
-          if (i < limiteFinal && i >= this.state.offset) {
+          else if (i < limiteFinal && i >= this.state.offset) {
             return (
               <PokeCard key={i} url={poke.url} pokename={poke.name}></PokeCard>
             );

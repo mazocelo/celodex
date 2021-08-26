@@ -10,7 +10,7 @@ class PokeCard extends Component {
       imageUrl: "",
       pokeIndex: ""
     };
-  }
+}
 
   async componentDidMount() {
     const resp = await axios
