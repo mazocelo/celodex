@@ -7,7 +7,8 @@ class List extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      find: "",
+      found: "",
+      looking: "",
       searching: false,
       offset: 0,
       limit: 21,
@@ -17,19 +18,17 @@ class List extends Component {
     };
   }
   async componentDidMount() {
-    const resp = await axios
-      .get(this.state.url, {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      .then(res => {
-        const pokes = res.data.results;
-        const listados = new Array(this.state.limit);
+    const resp = await axios.get(this.state.url, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
 
-        const contagem = this.state.offset + this.state.limit;
-        this.setState({ pokemon: pokes, lista: pokes });
-      });
+    const pokes = resp.data.results;
+    const listados = new Array(this.state.limit);
+
+    //const contagem = this.state.offset + this.state.limit;
+    this.setState({ pokemon: pokes });
   }
   more21(e) {
     if (this.state.offset > 1079) {
@@ -51,22 +50,46 @@ class List extends Component {
   }
 
   search(e) {
-    const procurado = e.target.value;
-    if (procurado.length > 0) {
-      this.setState({ find: procurado }); //
-      console.log(this.state.find);
-    } 
+    var procurado = e.target.value;
+    procurado = procurado.toLowerCase();
+    // if (procurado.length > 0) {
+    this.setState({ looking: procurado }); //
+    console.log(procurado);
+    //}
   }
   //
-  findNow() {
-    return this.state.pokemon.forEach((listado, i) => {
-      if (listado.name == this.state.find) {
-        //const novoArray = [listado];
-        //console.log(listado);
-       return this.setState({ lista: [listado], searching: true });
-        
-      }
-    });
+  findNow(e) {
+    e.preventDefault();
+    const procurado = this.state.pokemon.find(
+      el => el.name == this.state.looking
+    );
+    console.log(procurado);
+    if (procurado) this.setState({ searching: true, found: procurado });
+  }
+  renderList() {
+    var lista = null;
+
+    if (this.state.searching == true) {
+      var procurado = this.state.found;
+      console.log(procurado.url);
+      lista = (
+        <PokeCard
+          key={procurado.url}
+          url={procurado.url}
+          pokename={procurado.name}
+        ></PokeCard>
+      );
+    } else {
+      lista = this.state.pokemon.map((poke, i) => {
+        var limiteFinal = this.state.limit + this.state.offset;
+        if (i < limiteFinal && i >= this.state.offset) {
+          return (
+            <PokeCard key={i} url={poke.url} pokename={poke.name}></PokeCard>
+          );
+        }
+      });
+    }
+    return lista;
   }
   render() {
     return (
@@ -86,23 +109,7 @@ class List extends Component {
             Procurar
           </button>
         </div>
-
-        {this.state.lista.map((poke, i) => {
-          var limiteFinal = this.state.limit + this.state.offset;
-            
-          if(this.state.  searching){
-          console.log(poke);
-          
-            return(<PokeCard key={i} url={poke.url} pokename={poke.name}></PokeCard>
-            )
-          }
-          
-          else if (i < limiteFinal && i >= this.state.offset) {
-            return (
-              <PokeCard key={i} url={poke.url} pokename={poke.name}></PokeCard>
-            );
-          }
-        })}
+        {this.renderList()}
         <button
           className="btnP"
           onClick={e => {
@@ -112,9 +119,8 @@ class List extends Component {
           {"<<"}
         </button>
         <button
-          
           className="btnP"
-          onClick={e => {  
+          onClick={e => {
             this.more21(e);
           }}
         >

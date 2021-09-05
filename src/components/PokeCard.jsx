@@ -10,27 +10,32 @@ class PokeCard extends Component {
       imageUrl: "",
       pokeIndex: ""
     };
-}
+  }
 
   async componentDidMount() {
-    const resp = await axios
-      .get(this.props.url, {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      .then(res => {
-        const img = res.data.sprites.front_default;
-        //console.log(img);
-        this.setState({ imageUrl: img });
-        //console.log(this.state.imageUrl)
-      });
+    const resp = await axios.get(this.props.url, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    const img = resp.data.sprites.front_default;
+    const name = resp.data.name;
+    //console.log(img);
+    this.setState({
+      imageUrl: img,
+      name
+    });
+    //console.log(this.state.imageUrl)
   }
+  toUpper(string){
+  return string.charAt(0).toUpperCase() + string.slice(1)
+
+}
   render() {
     return (
       <div className="pokecard">
         <img src={this.state.imageUrl} />
-        <h1 className="pokename">{this.props.pokename}</h1>
+        <h1 className="pokename">{ this.toUpper(this.props.pokename)}</h1>
       </div>
     );
   }
